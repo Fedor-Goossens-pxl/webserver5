@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio – CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Fedor<span>.</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introductie.html">Introductie</a></li>
+            <li><a href="logboek.html">Logboek</a></li>
+            <li><a href="ontwikkeling.html">Ontwikkeling</a></li>
+            <li><a href="opdrachten.html">Opdrachten</a></li>
+            <li><a href="reflectie.html">Reflectie</a></li>
+            <li><a href="cv.html" class="active">CV</a></li>
+            <li><a href="contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+
+<div class="page-header">
+    <div class="container">
+        <div class="hero-badge fade-up d1 sa-js" data-sa-anim="fadeInDown" data-sa-duration="600ms" data-sa-delay="0ms">Mijn CV</div>
+        <h1 class="fade-up d2 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="100ms">Curriculum Vitae</h1>
+        <p class="fade-up d3 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="200ms">Een overzicht van mijn opleiding, ervaring en vaardigheden als Systeem- en Netwerkbeheerder.</p>
+    </div>
+</div>
+
+<div class="content-section">
+    <div class="container">
+
+        <!-- DOWNLOAD BANNER -->
+        <div class="cta-banner fade-up d1 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="0ms" style="margin-bottom:2rem;">
+            <h2>Mijn CV downloaden?</h2>
+            <p>Download de volledige PDF-versie van mijn curriculum vitae.</p>
+            <a href="Fedor_Goossens_CV_new.pdf" download class="btn btn-dark btn-arrow"><span>⬇ Download CV (PDF)</span></a>
+        </div>
+
+        <!-- INKLAPBAAR CV PREVIEW -->
+        <div class="content-card fade-up d2 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="100ms" style="margin-bottom:2rem; padding:0; overflow:hidden;">
+            <button id="cvToggleBtn" onclick="toggleCV()" style="
+                width:100%; background:none; border:none; cursor:pointer;
+                display:flex; align-items:center; justify-content:space-between;
+                padding:1.5rem 2rem; color:#111827;
+            ">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <span style="font-size:1.1rem; font-weight:700;">📄 CV bekijken op deze pagina</span>
+                </div>
+                <span id="cvArrow" style="font-size:1.3rem; transition:transform 0.3s ease;">▼</span>
+            </button>
+
+            <div id="cvPreview" style="display:none; padding:0 2rem 2rem;">
+                <hr class="divider-card" style="margin-top:0;">
+
+                <div style="display:flex; align-items:flex-start; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+                    <div>
+                        <h2 style="margin-bottom:0.2rem;">Fedor Goossens</h2>
+                        <p style="color:#e63946; font-weight:600; margin-bottom:0.5rem;">Systeem- en Netwerkbeheerder</p>
+                        <p style="font-size:0.88rem; color:#9ca3af; line-height:1.8;">
+                            📍 Wijkstraat 5, 3960 Bree, België<br>
+                            📧 fedor.goossens@student.pxl.be<br>
+                            📞 +32 471 47 57 77<br>
+                            🔗 <a href="https://www.linkedin.com/in/fedor-goossens-094803205" target="_blank" style="color:#e63946;">linkedin.com/in/fedor-goossens</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.5rem;">
+                    <div class="card-label" style="margin-bottom:0.5rem;">Profiel</div>
+                    <p>Praktijkgerichte en theoretische student in Systeem- en Netwerkbeheer met uitgebreide ervaring uit werkplekleren. Sterk in het opzetten, configureren en troubleshooten van netwerken, en in het beheren van operationele systemen.</p>
+                </div>
+
+                <hr class="divider-card">
+
+                <div style="margin-bottom:1.5rem;">
+                    <div class="card-label" style="margin-bottom:0.5rem;">Opleiding</div>
+                    <h3 style="font-size:1rem; margin-bottom:0.25rem;">PXL Hogeschool – Graduaat Systeem- en Netwerkbeheer</h3>
+                    <p style="color:#9ca3af; font-size:0.85rem; margin-bottom:0.75rem;">Sept 2023 — Dec 2025 · Hasselt</p>
+                    <ul style="font-size:0.92rem;">
+                        <li><strong>Werkplekleren 3</strong> – Stage bij B1TS als support engineer.</li>
+                        <li><strong>Werkplekleren 1 &amp; 2</strong> – Teamwerk, Scrum, opzetten en beheren van een schoolnetwerk.</li>
+                        <li><strong>Network Enterprise 1 &amp; 2</strong> – Cisco-netwerken troubleshooten, fysieke switches configureren, Python-toepassingen.</li>
+                        <li><strong>Security Essentials &amp; Advanced</strong> – IT-beveiliging, hacking- en virusterminologie, decryptie en informatieherstel.</li>
+                        <li><strong>Virtualisatie</strong> – Docker, TrueNAS-schijfbeheer en virtuele machines op Windows en Linux.</li>
+                    </ul>
+                </div>
+
+                <hr class="divider-card">
+
+                <div style="margin-bottom:1.5rem;">
+                    <div class="card-label" style="margin-bottom:0.5rem;">Ervaring</div>
+                    <h3 style="font-size:1rem; margin-bottom:0.25rem;">Werkplekleren <span style="font-weight:400; color:#9ca3af;">· 2024 — 2026</span></h3>
+                    <p style="font-size:0.92rem; margin-bottom:0.75rem;">Gericht op het installeren, configureren en beheren van Linux- en Windows-systemen binnen professionele IT-omgevingen.</p>
+                    <p style="font-size:0.9rem; font-weight:600; margin-bottom:0.4rem;">Stage-ervaring:</p>
+                    <ul style="font-size:0.92rem;">
+                        <li>Cisco-netwerken geconfigureerd (VLAN's, routing, NAT/DHCP) tijdens stageopdrachten.</li>
+                        <li>WatchGuard-firewalls beheerd en policies aangepast in productieomgevingen.</li>
+                        <li>UniFi-switches en access points geconfigureerd voor netwerksegmentatie.</li>
+                        <li>Virtuele omgevingen en Docker-containers opgezet voor testscenario's en troubleshooting.</li>
+                        <li>Linux-servers opgezet en beheerd (Apache/Nginx) met eigen webpagina's.</li>
+                        <li>Windows VM's beheerd, inclusief firewalltaken en PowerShell scripts.</li>
+                        <li>Kleine netwerk- en securityscripts geschreven in Python.</li>
+                    </ul>
+                </div>
+
+                <hr class="divider-card">
+
+                <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+                    <div style="flex:1; min-width:200px;">
+                        <div class="card-label" style="margin-bottom:0.5rem;">Vaardigheden</div>
+                        <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                            <span class="tag">Cisco & UniFi routing</span>
+                            <span class="tag">Virtuele machines</span>
+                            <span class="tag">Linux webservers</span>
+                            <span class="tag">PowerShell scripting</span>
+                            <span class="tag">Security basics</span>
+                            <span class="tag">Kali Linux</span>
+                            <span class="tag">Hashing & recovery</span>
+                        </div>
+                    </div>
+                    <div style="flex:1; min-width:200px;">
+                        <div class="card-label" style="margin-bottom:0.5rem;">Persoonlijke gegevens</div>
+                        <p style="font-size:0.9rem; line-height:2;">
+                            <strong>Geboortedatum:</strong> 18 februari 2002<br>
+                            <strong>Geboorteplaats:</strong> Bree<br>
+                            <strong>Nationaliteit:</strong> Belg<br>
+                            <strong>Rijbewijs:</strong> AM, B
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFIEL -->
+        <div class="content-card fade-up d2 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="100ms">
+            <div class="card-label">Profiel</div>
+            <h2>Fedor Goossens</h2>
+            <p style="color:#e63946; font-weight:600; margin-bottom:0.75rem;">Systeem- en Netwerkbeheerder</p>
+            <hr class="divider-card">
+            <p>Praktijkgerichte en theoretische student in Systeem- en Netwerkbeheer met uitgebreide ervaring uit werkplekleren. Sterk in het opzetten, configureren en troubleshooten van netwerken, en in het beheren van operationele systemen.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem; font-size:0.9rem; color:#9ca3af;">
+                <span>📍 Wijkstraat 5, 3960 Bree, België</span>
+                <span>📧 fedor.goossens@student.pxl.be</span>
+                <span>📞 +32 471 47 57 77</span>
+                <span>🔗 <a href="https://www.linkedin.com/in/fedor-goossens-094803205" target="_blank" style="color:#e63946;">LinkedIn</a></span>
+            </div>
+        </div>
+
+        <!-- PERSOONLIJKE GEGEVENS + VAARDIGHEDEN -->
+        <div class="grid-3 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="100ms" style="margin-bottom:2rem;">
+            <div class="card-dark fade-up d2 sa-js" data-sa-anim="fadeInUp" data-sa-duration="600ms" data-sa-delay="100ms">
+                <div class="card-icon" style="background:rgba(230,57,70,0.12);">👤</div>
+                <h3>Persoonlijke gegevens</h3>
+                <p style="font-size:0.9rem; line-height:1.9;">
+                    <strong>Geboortedatum:</strong> 18 februari 2002<br>
+                    <strong>Geboorteplaats:</strong> Bree<br>
+                    <strong>Nationaliteit:</strong> Belg<br>
+                    <strong>Rijbewijs:</strong> AM, B
+                </p>
+            </div>
+            <div class="card-dark fade-up d3 sa-js" data-sa-anim="fadeInUp" data-sa-duration="600ms" data-sa-delay="200ms">
+                <div class="card-icon" style="background:rgba(230,57,70,0.12);">🛠️</div>
+                <h3>Vaardigheden</h3>
+                <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem;">
+                    <span class="tag">Cisco & UniFi routing</span>
+                    <span class="tag">Virtuele machines</span>
+                    <span class="tag">Linux webservers</span>
+                    <span class="tag">PowerShell scripting</span>
+                    <span class="tag">Security basics</span>
+                    <span class="tag">Kali Linux</span>
+                    <span class="tag">Hashing & recovery</span>
+                </div>
+            </div>
+            <div class="card-dark fade-up d4 sa-js" data-sa-anim="fadeInUp" data-sa-duration="600ms" data-sa-delay="300ms">
+                <div class="card-icon" style="background:rgba(230,57,70,0.12);">🌐</div>
+                <h3>Socials</h3>
+                <p style="font-size:0.9rem;">
+                    <a href="https://www.linkedin.com/in/fedor-goossens-094803205" target="_blank" style="color:#e63946;">linkedin.com/in/fedor-goossens</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- OPLEIDING -->
+        <div class="content-card fade-up d3 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="200ms">
+            <div class="card-label">Opleiding</div>
+            <h2>Opleiding</h2>
+            <hr class="divider-card">
+            <h3>PXL Hogeschool – Graduaat Systeem- en Netwerkbeheer</h3>
+            <p style="color:#9ca3af; font-size:0.9rem; margin-bottom:1rem;">Sept 2023 — Dec 2025 · Hasselt</p>
+            <ul>
+                <li><strong>Werkplekleren 3</strong> – Stage bij B1TS als support engineer.</li>
+                <li><strong>Werkplekleren 1 &amp; 2</strong> – Teamwerk, Scrum, opzetten en beheren van een schoolnetwerk.</li>
+                <li><strong>Network Enterprise 1 &amp; 2</strong> – Cisco-netwerken troubleshooten, fysieke switches configureren, Python-toepassingen.</li>
+                <li><strong>Security Essentials &amp; Advanced</strong> – IT-beveiliging, hacking- en virusterminologie, decryptie en informatieherstel.</li>
+                <li><strong>Virtualisatie</strong> – Docker, TrueNAS-schijfbeheer en virtuele machines op Windows en Linux.</li>
+            </ul>
+        </div>
+
+        <!-- ERVARING -->
+        <div class="content-card fade-up d4 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="300ms">
+            <div class="card-label">Ervaring</div>
+            <h2>Ervaring</h2>
+            <hr class="divider-card">
+            <h3>Werkplekleren <span style="font-weight:400; color:#9ca3af;">· 2024 — 2026</span></h3>
+            <p>Gericht op het installeren, configureren en beheren van Linux- en Windows-systemen binnen professionele IT-omgevingen. Ervaring met virtualisatie, netwerkconfiguratie, gebruikersbeheer, monitoring en het oplossen van technische problemen.</p>
+            <h3 style="margin-top:1.5rem;">Stage-ervaring</h3>
+            <ul>
+                <li>Cisco-netwerken geconfigureerd (VLAN's, routing, NAT/DHCP) tijdens stageopdrachten.</li>
+                <li>WatchGuard-firewalls beheerd en policies aangepast in productieomgevingen.</li>
+                <li>UniFi-switches en access points geconfigureerd voor netwerksegmentatie.</li>
+                <li>Virtuele omgevingen en Docker-containers opgezet voor testscenario's en troubleshooting.</li>
+                <li>Netwerk- en systeemproblemen opgelost in dagelijkse supportomgevingen.</li>
+                <li>Linux-servers opgezet en beheerd (Apache/Nginx) met eigen webpagina's.</li>
+                <li>Windows VM's beheerd, inclusief firewalltaken en PowerShell scripts.</li>
+                <li>Kleine netwerk- en securityscripts geschreven in Python.</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo">Fedor<span>.</span></a>
+            <div class="footer-links">
+                <a href="introductie.html">Introductie</a>
+                <a href="logboek.html">Logboek</a>
+                <a href="ontwikkeling.html">Ontwikkeling</a>
+                <a href="opdrachten.html">Opdrachten</a>
+                <a href="reflectie.html">Reflectie</a>
+                <a href="cv.html">CV</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <span class="footer-copy">© 2026 Fedor Goossens</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    function toggleCV() {
+        const preview = document.getElementById('cvPreview');
+        const arrow   = document.getElementById('cvArrow');
+        const isOpen  = preview.style.display !== 'none';
+        preview.style.display = isOpen ? 'none' : 'block';
+        arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+</script>
+<script src="cursor.js"></script>
+<script src="scroll-animate.js"></script>
+<script>const sa = new ScrollAnimate();</script>
+</body>
+</html>

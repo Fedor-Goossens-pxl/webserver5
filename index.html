@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio – Fedor Goossens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== NAVIGATIE ===== -->
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Fedor<span>.</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="introductie.html">Introductie</a></li>
+            <li><a href="logboek.html">Logboek</a></li>
+            <li><a href="ontwikkeling.html">Ontwikkeling</a></li>
+            <li><a href="opdrachten.html">Opdrachten</a></li>
+            <li><a href="reflectie.html">Reflectie</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge fade-up d1"> Werkplekleren Portfolio</div>
+        <h1 class="fade-up d2">Fedor <span class="highlight">Goossens</span></h1>
+        <p class="fade-up d3">Systeem- en Netwerkbeheer · IT Professional in opleiding · Gedreven door technische uitdagingen en groei.</p>
+        <div class="fade-up d4" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+            <a href="introductie.html" class="btn btn-primary btn-arrow"><span>Bekijk mijn portfolio</span></a>
+            <a href="contact.html" class="btn btn-outline"><span>Neem contact op</span></a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TERMINAL ===== -->
+<section>
+    <div class="container">
+        <div class="fade-up">
+            <div class="section-label">Terminal</div>
+            <h2 class="section-title">Interactieve Terminal</h2>
+            <p class="section-subtitle">Type <code style="background:rgba(230,57,70,0.12);color:#ff6b75;padding:0.2rem 0.6rem;border-radius:6px;font-size:0.9rem;">help</code> om te beginnen.</p>
+        </div>
+        <div id="terminal-wrapper" class="fade-up d2">
+            <div id="terminal">
+                <div id="terminal-titlebar">
+                    <span class="t-dot" style="background:#ff5f57;"></span>
+                    <span class="t-dot" style="background:#febc2e;"></span>
+                    <span class="t-dot" style="background:#28c840;"></span>
+                    <span id="terminal-title">fedor@portfolio:~</span>
+                </div>
+                <div id="terminal-output">
+                    <div class="t-welcome">
+                        <span class="t-red">WELCOME TO MY PORTFOLIO</span><br>
+                        I'm <span class="t-white">Fedor Goossens</span>, an IT student with a background in<br>
+                        <span class="t-red">System and Network Administration</span>.<br>
+                        If you want to learn more about me, feel free to explore the<br>
+                        <span class="t-link" onclick="navigateTo('introductie.html')">About</span>, <span class="t-link" onclick="navigateTo('ontwikkeling.html')">Skills</span>, and <span class="t-link" onclick="navigateTo('reflectie.html')">Reflections</span> sections.<br><br>
+                        <span class="t-muted">Type <span class="t-red">'help'</span> to navigate. (TAB = autocomplete, ↑/↓ = history)</span>
+                    </div>
+                </div>
+                <div id="terminal-input-line">
+                    <span class="t-prompt">fedor@portfolio:~$&nbsp;</span>
+                    <input type="text" id="terminal-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OVER HET PORTFOLIO ===== -->
+<section>
+    <div class="container">
+        <div class="fade-up">
+            <div class="section-label">Het portfolio</div>
+            <h2 class="section-title">Meer dan een verzameling documenten</h2>
+            <p class="section-subtitle">Dit portfolio is mijn persoonlijk instrument om mijn leerproces zichtbaar te maken, mijn professionele groei te onderbouwen en mijn evolutie doorheen het werkplekleren te versterken.</p>
+        </div>
+        <div class="grid-3">
+            <div class="card fade-up d1">
+                <div class="card-icon">📖</div>
+                <h3 style="font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:0.6rem;">Zelfreflectie</h3>
+                <p>Regelmatig terugkijken op mijn ervaringen, keuzes en groei geeft mij een duidelijk beeld van mijn ontwikkeling als IT-professional.</p>
+            </div>
+            <div class="card fade-up d2">
+                <div class="card-icon">🧭</div>
+                <h3 style="font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:0.6rem;">Begeleiding</h3>
+                <p>Mijn coaches kunnen mijn vooruitgang opvolgen, gerichte feedback geven en mij beter begeleiden op basis van mijn portfolio.</p>
+            </div>
+            <div class="card fade-up d3">
+                <div class="card-icon">🚀</div>
+                <h3 style="font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:0.6rem;">Professionele groei</h3>
+                <p>Door mijn ervaringen te analyseren en te koppelen aan persoonlijke waardering, werk ik bewust aan mijn sterktes en uitdagingen.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STRUCTUUR ===== -->
+<section>
+    <div class="container">
+        <div class="fade-up">
+            <div class="section-label">Structuur</div>
+            <h2 class="section-title">Wat vind je in dit portfolio?</h2>
+            <p class="section-subtitle">Het portfolio bestaat uit vijf hoofdonderdelen die samen een volledig beeld geven van mijn werkplekleren.</p>
+        </div>
+        <div class="grid-2">
+            <a href="introductie.html" class="card-dark fade-up d1" style="text-decoration:none;">
+                <div class="step-number">01</div>
+                <h3>Introductie</h3>
+                <p>Wie ik ben, wat mijn doelen zijn en waarom ik dit portfolio bijhoud. Een persoonlijke introductie van mijn traject.</p>
+            </a>
+            <a href="logboek.html" class="card-dark fade-up d2" style="text-decoration:none;">
+                <div class="step-number">02</div>
+                <h3>Logboek</h3>
+                <p>Een chronologisch overzicht van mijn werkzaamheden, ervaringen en activiteiten tijdens WPL1, WPL2 en WPL3.</p>
+            </a>
+            <a href="ontwikkeling.html" class="card-dark fade-up d3" style="text-decoration:none;">
+                <div class="step-number">03</div>
+                <h3>Ontwikkeling</h3>
+                <p>Hoe mijn technische vaardigheden en soft skills gegroeid zijn doorheen mijn stage bij B1TS en de leertrajecten.</p>
+            </a>
+            <a href="opdrachten.html" class="card-dark fade-up d4" style="text-decoration:none;">
+                <div class="step-number">04</div>
+                <h3>Opdrachten</h3>
+                <p>Een overzicht van alle opdrachten en documenten die ik tijdens WPL1, WPL2 en WPL3 heb uitgevoerd en gemaakt.</p>
+            </a>
+            <a href="reflectie.html" class="card-dark fade-up d5" style="text-decoration:none; grid-column: 1 / -1;">
+                <div class="step-number">05</div>
+                <h3>Reflectie</h3>
+                <p>Mijn persoonlijke reflecties op gastseminaries, opdrachten, samenwerking en mijn vooruitblik naar WPL4 en het werkveld.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section>
+    <div class="container">
+        <div class="cta-banner fade-up">
+            <h2>Klaar om meer te ontdekken?</h2>
+            <p>Neem een kijkje in mijn portfolio of neem rechtstreeks contact met mij op.</p>
+            <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                <a href="introductie.html" class="btn btn-dark btn-arrow"><span>Start hier</span></a>
+                <a href="contact.html" class="btn btn-outline"><span>Contact</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo">Fedor<span>.</span></a>
+            <div class="footer-links">
+                <a href="introductie.html">Introductie</a>
+                <a href="logboek.html">Logboek</a>
+                <a href="ontwikkeling.html">Ontwikkeling</a>
+                <a href="opdrachten.html">Opdrachten</a>
+                <a href="reflectie.html">Reflectie</a>
+                <a href="cv.html">CV</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <span class="footer-copy">© 2026 Fedor Goossens</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Hamburger menu
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.style.animation = 'fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) forwards';
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .card-dark, .cta-banner').forEach(el => {
+        if (!el.classList.contains('fade-up')) {
+            el.style.opacity = '0';
+            observer.observe(el);
+        }
+    });
+</script>
+
+<script>
+// ===== TERMINAL =====
+const output   = document.getElementById('terminal-output');
+const input    = document.getElementById('terminal-input');
+const wrapper  = document.getElementById('terminal-wrapper');
+let history    = [];
+let historyIdx = -1;
+
+const COMMANDS = ['help','ls','whoami','skills','contact','status','ping','uptime','neofetch','man','clear',
+                  'introductie','logboek','ontwikkeling','opdrachten','reflectie','home'];
+
+const BOOT_TIME = new Date(Date.now() - 1000 * 60 * 60 * 24 * 12);
+
+function navigateTo(page) { window.location.href = page; }
+
+function print(html) {
+    const div = document.createElement('div');
+    div.className = 't-line';
+    div.innerHTML = html;
+    output.appendChild(div);
+    output.scrollTop = output.scrollHeight;
+}
+
+function printBlank() {
+    const div = document.createElement('span');
+    div.className = 't-blank';
+    output.appendChild(div);
+    output.scrollTop = output.scrollHeight;
+}
+
+function handleCommand(raw) {
+    const trimmed = raw.trim();
+    if (!trimmed) return;
+
+    history.unshift(trimmed);
+    historyIdx = -1;
+
+    print(`<span class="t-cmd-echo">fedor@portfolio:~$ ${escHtml(trimmed)}</span>`);
+
+    const parts = trimmed.split(/\s+/);
+    const cmd   = parts[0].toLowerCase();
+    const args  = parts.slice(1);
+
+    switch (cmd) {
+
+        case 'help':
+            print('<span class="t-white t-bold">commands:</span>');
+            print('  <span class="t-cyan">help</span>                  toon beschikbare commando\'s');
+            print('  <span class="t-cyan">ls</span> <span class="t-muted">[ -l ]</span>             toon secties');
+            print('  <span class="t-cyan">whoami</span>                over mij');
+            print('  <span class="t-cyan">skills</span> <span class="t-muted">[--top]</span>        toon vaardigheden');
+            print('  <span class="t-cyan">contact</span>               contactgegevens');
+            print('  <span class="t-cyan">status</span>                beschikbaarheid / focus');
+            print('  <span class="t-cyan">ping</span> <span class="t-muted">&lt;target&gt;</span>         simuleer ping');
+            print('  <span class="t-cyan">uptime</span>                portfolio uptime');
+            print('  <span class="t-cyan">neofetch</span>              systeem samenvatting');
+            print('  <span class="t-cyan">man</span> <span class="t-muted">&lt;topic&gt;</span>           mini handleiding');
+            print('  <span class="t-cyan">clear</span>                 leeg scherm');
+            printBlank();
+            print('<span class="t-white t-bold">secties:</span>');
+            print('  home | introductie | logboek | ontwikkeling | opdrachten | reflectie | contact');
+            printBlank();
+            print('<span class="t-muted">tip: typ een sectienaam om er naartoe te gaan (bv. \'skills\')</span>');
+            break;
+
+        case 'ls':
+            if (args.includes('-l')) {
+                print('<span class="t-muted">drwxr-xr-x  introductie/</span>');
+                print('<span class="t-muted">drwxr-xr-x  logboek/</span>');
+                print('<span class="t-muted">drwxr-xr-x  ontwikkeling/</span>');
+                print('<span class="t-muted">drwxr-xr-x  opdrachten/</span>');
+                print('<span class="t-muted">drwxr-xr-x  reflectie/</span>');
+                print('<span class="t-muted">-rw-r--r--  contact.html</span>');
+            } else {
+                print('<span class="t-cyan">introductie/</span>  <span class="t-cyan">logboek/</span>  <span class="t-cyan">ontwikkeling/</span>  <span class="t-cyan">opdrachten/</span>  <span class="t-cyan">reflectie/</span>  <span class="t-cyan">contact.html</span>');
+            }
+            break;
+
+        case 'whoami':
+            printBlank();
+            print('<span class="t-white t-bold">Fedor Goossens</span>');
+            printBlank();
+            print('  <span class="t-table-key">Opleiding</span>     <span class="t-table-val">Systeem- en Netwerkbeheer (SNE)</span>');
+            print('  <span class="t-table-key">Stage</span>         <span class="t-table-val">B1TS – IT bedrijf</span>');
+            print('  <span class="t-table-key">Focus</span>         <span class="t-table-val">Linux, netwerken, automatisatie</span>');
+            print('  <span class="t-table-key">Ambitie</span>       <span class="t-table-val">Systeembeheerder / Netwerkbeheerder</span>');
+            print('  <span class="t-table-key">Sterktes</span>      <span class="t-table-val">Analytisch denken, troubleshooting, zelfstandig</span>');
+            printBlank();
+            break;
+
+        case 'skills':
+            if (args.includes('--top')) {
+                print('<span class="t-white t-bold">Top skills:</span>');
+                print('  <span class="t-red">★★★★★</span>  WatchGuard / Firewall');
+                print('  <span class="t-red">★★★★★</span>  VLAN & Netwerksegmentatie');
+                print('  <span class="t-red">★★★★☆</span>  Linux (Ubuntu Server)');
+                print('  <span class="t-red">★★★★☆</span>  Veeam Backup & Replication');
+                print('  <span class="t-red">★★★★☆</span>  PowerShell / Scripting');
+            } else {
+                print('<span class="t-white t-bold">Technische skills:</span>');
+                print('  <span class="t-cyan">Netwerk</span>     WatchGuard, VLAN, UniFi, DHCP, VPN, Trunking');
+                print('  <span class="t-cyan">Servers</span>     Windows Server, Ubuntu Server, Azure, iLO');
+                print('  <span class="t-cyan">Tools</span>       Veeam, Pulseway, TeamViewer, Windows Admin Center');
+                print('  <span class="t-cyan">Scripting</span>   PowerShell, Podman, Bash');
+                printBlank();
+                print('<span class="t-muted">Tip: gebruik \'skills --top\' voor top 5 • of ga naar </span><span class="t-link" onclick="navigateTo(\'ontwikkeling.html\')">ontwikkeling</span>');
+            }
+            break;
+
+        case 'contact':
+            printBlank();
+            print('  <span class="t-table-key">📧 Email</span>     <span class="t-white">fedor.goossens@outlook.com</span>');
+            print('  <span class="t-table-key">🌐 Portfolio</span>  <span class="t-white">localhost:3000</span>');
+            printBlank();
+            print('  <span class="t-muted">Of ga direct naar de </span><span class="t-link" onclick="navigateTo(\'contact.html\')">contactpagina</span>');
+            printBlank();
+            break;
+
+        case 'status':
+            printBlank();
+            print('  <span class="t-green">●</span>  <span class="t-white">Beschikbaar voor WPL4</span>');
+            print('  <span class="t-green">●</span>  <span class="t-white">Reactietijd: &lt; 24 uur</span>');
+            print('  <span class="t-yellow">●</span>  <span class="t-white">Focus: Linux, netwerken & automatisatie</span>');
+            print('  <span class="t-cyan">●</span>  <span class="t-white">Stage bij B1TS – WPL3 voltooid</span>');
+            printBlank();
+            break;
+
+        case 'ping':
+            const target = args[0] || 'portfolio';
+            print(`PING ${escHtml(target)} – 56 data bytes`);
+            [12, 9, 11, 10].forEach((ms, i) => {
+                setTimeout(() => print(`64 bytes from ${escHtml(target)}: icmp_seq=${i+1} ttl=64 time=<span class="t-green">${ms} ms</span>`), i * 300);
+            });
+            setTimeout(() => {
+                print('');
+                print(`--- ${escHtml(target)} ping statistics ---`);
+                print('4 packets transmitted, <span class="t-green">4 received</span>, 0% packet loss');
+            }, 1400);
+            break;
+
+        case 'uptime':
+            const now   = new Date();
+            const diff  = now - BOOT_TIME;
+            const days  = Math.floor(diff / 86400000);
+            const hours = Math.floor((diff % 86400000) / 3600000);
+            const mins  = Math.floor((diff % 3600000) / 60000);
+            print(`up <span class="t-green">${days} days, ${hours}:${String(mins).padStart(2,'0')}</span>, load average: <span class="t-cyan">0.42, 0.38, 0.31</span>`);
+            break;
+
+        case 'neofetch':
+            printBlank();
+            print('        <span class="t-red">██████</span>      <span class="t-white t-bold">fedor</span><span class="t-muted">@</span><span class="t-white t-bold">portfolio</span>');
+            print('       <span class="t-red">████████</span>     <span class="t-muted">──────────────────</span>');
+            print('      <span class="t-red">██</span>  <span class="t-white">██</span>  <span class="t-red">██</span>    <span class="t-cyan">OS:</span>      Portfolio v1.0');
+            print('      <span class="t-red">████████████</span>  <span class="t-cyan">Shell:</span>   terminal.js');
+            print('       <span class="t-red">██████████</span>   <span class="t-cyan">Opleiding:</span> SNE – Systeem & Netwerk');
+            print('        <span class="t-red">████████</span>    <span class="t-cyan">Stage:</span>   B1TS');
+            print('         <span class="t-red">██████</span>     <span class="t-cyan">Focus:</span>   Linux · Netwerk · Cloud');
+            print('          <span class="t-red">████</span>      <span class="t-cyan">Email:</span>   fedor.goossens@outlook.com');
+            printBlank();
+            break;
+
+        case 'man':
+            const topic = args[0];
+            const manuals = {
+                whoami:   'Geeft informatie over Fedor Goossens: opleiding, stage, focus en sterktes.',
+                skills:   'Toont technische vaardigheden. Gebruik --top voor de top 5.',
+                contact:  'Toont contactgegevens en een link naar het contactformulier.',
+                ping:     'Simuleert een netwerkping naar een doelwit. Gebruik: ping <target>',
+                neofetch: 'Toont een systeem-samenvatting in ASCII stijl.',
+                status:   'Toont beschikbaarheid, reactietijd en huidige focus.',
+                ls:       'Toont de secties van het portfolio. Gebruik -l voor details.',
+                uptime:   'Toont hoe lang het portfolio al online is.',
+            };
+            if (!topic) {
+                print('<span class="t-yellow">Gebruik: man &lt;command&gt;</span>');
+                print(`Beschikbare topics: ${Object.keys(manuals).join(', ')}`);
+            } else if (manuals[topic]) {
+                printBlank();
+                print(`<span class="t-white t-bold">MAN PAGE – ${topic.toUpperCase()}</span>`);
+                print(`  ${manuals[topic]}`);
+                printBlank();
+            } else {
+                print(`<span class="t-yellow">Geen handleiding voor '${escHtml(topic)}'</span>`);
+            }
+            break;
+
+        case 'clear':
+            output.innerHTML = '';
+            break;
+
+        // Navigatie shortcuts
+        case 'home':         navigateTo('index.html');        break;
+        case 'introductie':  navigateTo('introductie.html');  break;
+        case 'logboek':      navigateTo('logboek.html');      break;
+        case 'ontwikkeling': navigateTo('ontwikkeling.html'); break;
+        case 'skills':       navigateTo('ontwikkeling.html'); break;
+        case 'opdrachten':   navigateTo('opdrachten.html');   break;
+        case 'reflectie':    navigateTo('reflectie.html');    break;
+        case 'about':        navigateTo('introductie.html');  break;
+        case 'education':    navigateTo('ontwikkeling.html'); break;
+
+        default:
+            print(`<span class="t-yellow">Commando niet gevonden: '${escHtml(cmd)}'</span> — typ <span class="t-red">help</span> voor een overzicht.`);
+    }
+}
+
+function escHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// Input afhandeling
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        handleCommand(input.value);
+        input.value = '';
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (historyIdx < history.length - 1) {
+            historyIdx++;
+            input.value = history[historyIdx];
+        }
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIdx > 0) {
+            historyIdx--;
+            input.value = history[historyIdx];
+        } else {
+            historyIdx = -1;
+            input.value = '';
+        }
+    } else if (e.key === 'Tab') {
+        e.preventDefault();
+        const val = input.value.trim();
+        const match = COMMANDS.find(c => c.startsWith(val));
+        if (match) input.value = match;
+    }
+});
+
+// Klik op terminal = focus input
+document.getElementById('terminal').addEventListener('click', () => input.focus());
+</script>
+    <script src="cursor.js"></script>
+    <script src="scroll-animate.js"></script>
+    <script>const sa = new ScrollAnimate();</script>
+</body>
+</html>

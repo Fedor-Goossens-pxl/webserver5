@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio – Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Fedor<span>.</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introductie.html">Introductie</a></li>
+            <li><a href="logboek.html">Logboek</a></li>
+            <li><a href="ontwikkeling.html">Ontwikkeling</a></li>
+            <li><a href="opdrachten.html">Opdrachten</a></li>
+            <li><a href="reflectie.html">Reflectie</a></li>
+            <li><a href="contact.html" class="nav-cta active">Contact</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+
+<div class="page-header">
+    <div class="container">
+        <div class="hero-badge fade-up d1 sa-js" data-sa-anim="fadeInDown" data-sa-duration="600ms" data-sa-delay="0ms">Neem contact op</div>
+        <h1 class="fade-up d2 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="100ms">Stuur mij een bericht</h1>
+        <p class="fade-up d3 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="200ms">Heb je een vraag of wil je meer informatie? Vul het formulier in en ik neem zo snel mogelijk contact op.</p>
+    </div>
+</div>
+
+<div class="content-section">
+    <div class="container">
+        <div style="max-width: 680px; margin: 0 auto;">
+
+            <!-- FORMULIER KAART -->
+            <div class="content-card fade-up d2 sa-js" data-sa-anim="fadeInUp" data-sa-duration="700ms" data-sa-delay="100ms" style="border-radius: 28px;">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="naam">Volledige naam *</label>
+                        <input type="text" id="naam" placeholder="Jouw Naam" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail adres *</label>
+                        <input type="email" id="email" placeholder="Jouw E-mail" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bericht">Boodschap *</label>
+                    <textarea id="bericht" placeholder="Type hier eventueel uw bericht" required></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="akkoord" required>
+                    <label for="akkoord">
+                        Ik ga akkoord met de verwerking van mijn gegevens om contact op te nemen.
+                    </label>
+                </div>
+
+                <button class="submit-btn" id="submitBtn" onclick="verstuurMail()">
+                    <span id="btnText">Verzenden</span>
+                </button>
+
+                <div class="status-message" id="statusBericht"></div>
+            </div>
+
+            <!-- INFO -->
+            <div class="card-dark fade-up d3 sa-js" data-sa-anim="fadeInUp" data-sa-duration="600ms" data-sa-delay="200ms" style="margin-top:1.5rem; text-align:center;">
+                <p style="font-size:0.9rem;">
+                    📌 Dit formulier stuurt je bericht rechtstreeks naar
+                    <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1d7d4d5dec39fd6dedec2c2d4dfc2f1dec4c5dddededa9fd2dedc">[email&#160;protected]</a></strong>
+                    via EmailJS. Je gegevens worden nergens opgeslagen.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo">Fedor<span>.</span></a>
+            <div class="footer-links">
+                <a href="introductie.html">Introductie</a>
+                <a href="logboek.html">Logboek</a>
+                <a href="ontwikkeling.html">Ontwikkeling</a>
+                <a href="opdrachten.html">Opdrachten</a>
+                <a href="reflectie.html">Reflectie</a>
+                <a href="cv.html">CV</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <span class="footer-copy">© 2026 Fedor Goossens</span>
+        </div>
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const EMAILJS_PUBLIC_KEY  = "jTCKaDDGxe2q17pAY";
+    const EMAILJS_SERVICE_ID  = "service_d3ynorm";
+    const EMAILJS_TEMPLATE_ID = "template_l2uvvdk";
+
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    function verstuurMail() {
+        const naam    = document.getElementById("naam").value.trim();
+        const email   = document.getElementById("email").value.trim();
+        const bericht = document.getElementById("bericht").value.trim();
+        const akkoord = document.getElementById("akkoord").checked;
+        const btn     = document.getElementById("submitBtn");
+        const btnText = document.getElementById("btnText");
+
+        if (!naam || !email || !bericht) {
+            toonStatus("⚠️ Vul alle verplichte velden in.", "error");
+            return;
+        }
+        if (!akkoord) {
+            toonStatus("⚠️ Ga akkoord met de verwerking van je gegevens.", "error");
+            return;
+        }
+
+        btn.disabled = true;
+        btnText.textContent = "Bezig met verzenden...";
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            from_name:  naam,
+            from_email: email,
+            message:    bericht,
+            to_email:   "fedor.goossens@outlook.com"
+        })
+        .then(() => {
+            toonStatus("✅ Bericht verzonden! Ik neem zo snel mogelijk contact met je op.", "success");
+            document.getElementById("naam").value      = "";
+            document.getElementById("email").value     = "";
+            document.getElementById("bericht").value   = "";
+            document.getElementById("akkoord").checked = false;
+        })
+        .catch((err) => {
+            console.error("EmailJS fout:", err);
+            toonStatus("❌ Er is iets misgegaan. Controleer je EmailJS instellingen.", "error");
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btnText.textContent = "Verzenden";
+        });
+    }
+
+    function toonStatus(tekst, type) {
+        const el = document.getElementById("statusBericht");
+        el.textContent = tekst;
+        el.className = "status-message " + type;
+    }
+</script>
+    <script src="cursor.js"></script>
+    <script src="scroll-animate.js"></script>
+    <script>const sa = new ScrollAnimate();</script>
+</body>
+</html>
