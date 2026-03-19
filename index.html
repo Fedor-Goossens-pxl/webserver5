@@ -59,14 +59,7 @@
                     <span id="terminal-title">fedor@portfolio:~</span>
                 </div>
                 <div id="terminal-output">
-                    <div class="t-welcome">
-                        <span class="t-red">WELCOME TO MY PORTFOLIO</span><br>
-                        I'm <span class="t-white">Fedor Goossens</span>, an IT student with a background in<br>
-                        <span class="t-red">System and Network Administration</span>.<br>
-                        If you want to learn more about me, feel free to explore the<br>
-                        <span class="t-link" onclick="navigateTo('introductie.html')">About</span>, <span class="t-link" onclick="navigateTo('ontwikkeling.html')">Skills</span>, and <span class="t-link" onclick="navigateTo('reflectie.html')">Reflections</span> sections.<br><br>
-                        <span class="t-muted">Type <span class="t-red">'help'</span> to navigate. (TAB = autocomplete, ↑/↓ = history)</span>
-                    </div>
+                    <div class="t-welcome" id="t-welcome-block" style="opacity:0"></div>
                 </div>
                 <div id="terminal-input-line">
                     <span class="t-prompt">fedor@portfolio:~$&nbsp;</span>
@@ -210,9 +203,38 @@ let history    = [];
 let historyIdx = -1;
 
 const COMMANDS = ['help','ls','whoami','skills','contact','status','ping','uptime','neofetch','man','clear',
-                  'introductie','logboek','ontwikkeling','opdrachten','reflectie','home'];
+                  'introductie','logboek','ontwikkeling','opdrachten','reflectie','home',
+                  'cv','resume','projects','education','languages','history',
+                  'sudo','cat','rm','git'];
 
 const BOOT_TIME = new Date(Date.now() - 1000 * 60 * 60 * 24 * 12);
+
+// ── Typewriter welkomstboodschap ──
+(function typewriterWelcome() {
+    const block = document.getElementById('t-welcome-block');
+    if (!block) return;
+    const lines = [
+        '<span class="t-red">WELCOME TO MY PORTFOLIO</span>',
+        'I\'m <span class="t-white">Fedor Goossens</span>, an IT student with a background in',
+        '<span class="t-red">System and Network Administration</span>.',
+        'If you want to learn more about me, feel free to explore the',
+        '<span class="t-link" onclick="navigateTo(\'introductie.html\')">About</span>, <span class="t-link" onclick="navigateTo(\'ontwikkeling.html\')">Skills</span>, and <span class="t-link" onclick="navigateTo(\'reflectie.html\')">Reflections</span> sections.',
+        '',
+        '<span class="t-muted">Type <span class="t-red">\'help\'</span> to navigate. (TAB = autocomplete, ↑/↓ = history)</span>',
+    ];
+    block.style.opacity = '1';
+    let lineIdx = 0;
+    function nextLine() {
+        if (lineIdx >= lines.length) return;
+        const lineEl = document.createElement('div');
+        lineEl.innerHTML = lines[lineIdx];
+        block.appendChild(lineEl);
+        output.scrollTop = output.scrollHeight;
+        lineIdx++;
+        setTimeout(nextLine, lineIdx === 1 ? 60 : 120);
+    }
+    setTimeout(nextLine, 300);
+})();
 
 function navigateTo(page) { window.location.href = page; }
 
@@ -252,11 +274,16 @@ function handleCommand(raw) {
             print('  <span class="t-cyan">ls</span> <span class="t-muted">[ -l ]</span>             toon secties');
             print('  <span class="t-cyan">whoami</span>                over mij');
             print('  <span class="t-cyan">skills</span> <span class="t-muted">[--top]</span>        toon vaardigheden');
+            print('  <span class="t-cyan">education</span>             opleiding &amp; school');
+            print('  <span class="t-cyan">languages</span>             gesproken talen');
+            print('  <span class="t-cyan">projects</span>              persoonlijke projecten');
+            print('  <span class="t-cyan">cv</span>                    bekijk mijn Curriculum Vitae');
             print('  <span class="t-cyan">contact</span>               contactgegevens');
             print('  <span class="t-cyan">status</span>                beschikbaarheid / focus');
             print('  <span class="t-cyan">ping</span> <span class="t-muted">&lt;target&gt;</span>         simuleer ping');
             print('  <span class="t-cyan">uptime</span>                portfolio uptime');
             print('  <span class="t-cyan">neofetch</span>              systeem samenvatting');
+            print('  <span class="t-cyan">history</span>               toon commando-geschiedenis');
             print('  <span class="t-cyan">man</span> <span class="t-muted">&lt;topic&gt;</span>           mini handleiding');
             print('  <span class="t-cyan">clear</span>                 leeg scherm');
             printBlank();
@@ -310,14 +337,10 @@ function handleCommand(raw) {
             }
             break;
 
-        case 'contact':
-            printBlank();
-            print('  <span class="t-table-key">📧 Email</span>     <span class="t-white">fedor.goossens@outlook.com</span>');
-            print('  <span class="t-table-key">🌐 Portfolio</span>  <span class="t-white">localhost:3000</span>');
-            printBlank();
-            print('  <span class="t-muted">Of ga direct naar de </span><span class="t-link" onclick="navigateTo(\'contact.html\')">contactpagina</span>');
-            printBlank();
-            break;
+        case 'contact':      navigateTo('contact.html');     break;
+
+        // Old contact command is now a nav shortcut — keep data command too
+
 
         case 'status':
             printBlank();
@@ -366,14 +389,24 @@ function handleCommand(raw) {
         case 'man':
             const topic = args[0];
             const manuals = {
-                whoami:   'Geeft informatie over Fedor Goossens: opleiding, stage, focus en sterktes.',
-                skills:   'Toont technische vaardigheden. Gebruik --top voor de top 5.',
-                contact:  'Toont contactgegevens en een link naar het contactformulier.',
-                ping:     'Simuleert een netwerkping naar een doelwit. Gebruik: ping <target>',
-                neofetch: 'Toont een systeem-samenvatting in ASCII stijl.',
-                status:   'Toont beschikbaarheid, reactietijd en huidige focus.',
-                ls:       'Toont de secties van het portfolio. Gebruik -l voor details.',
-                uptime:   'Toont hoe lang het portfolio al online is.',
+                whoami:         'Geeft informatie over Fedor Goossens: opleiding, stage, focus en sterktes.',
+                skills:         'Toont technische vaardigheden. Gebruik --top voor de top 5.',
+                contact:        'Navigeert naar de contactpagina.',
+                cv:             'Toont een samenvatting van het CV en een link naar cv.html.',
+                resume:         'Alias voor cv.',
+                projects:       'Toont een overzicht van persoonlijke en stage-projecten.',
+                education:      'Toont opleidingsinfo: school, diploma, focus en stages.',
+                languages:      'Toont gesproken talen met visuele niveaubalk.',
+                certifications: 'Toont behaalde en lopende certificaten en badges.',
+                history:        'Toont de eerder ingevoerde commando\'s in deze sessie.',
+                ping:           'Simuleert een netwerkping naar een doelwit. Gebruik: ping <target>',
+                neofetch:       'Toont een systeem-samenvatting in ASCII stijl.',
+                status:         'Toont beschikbaarheid, reactietijd en huidige focus.',
+                ls:             'Toont de secties van het portfolio. Gebruik -l voor details.',
+                uptime:         'Toont hoe lang het portfolio al online is.',
+                sudo:           'Probeer: sudo hire me 😏',
+                cat:            'Lees bestanden. Probeer: cat /etc/fedor',
+                git:            'Git commando\'s. Probeer: git log of git status',
             };
             if (!topic) {
                 print('<span class="t-yellow">Gebruik: man &lt;command&gt;</span>');
@@ -390,6 +423,147 @@ function handleCommand(raw) {
 
         case 'clear':
             output.innerHTML = '';
+            break;
+
+        case 'cv':
+        case 'resume':
+            printBlank();
+            print('  <span class="t-white t-bold">📄 Curriculum Vitae – Fedor Goossens</span>');
+            printBlank();
+            print('  <span class="t-table-key">Naam</span>          <span class="t-table-val">Fedor Goossens</span>');
+            print('  <span class="t-table-key">Opleiding</span>     <span class="t-table-val">Graduaat Systeem- en Netwerkbeheer</span>');
+            print('  <span class="t-table-key">Stage</span>         <span class="t-table-val">B1TS – IT bedrijf</span>');
+            print('  <span class="t-table-key">Email</span>         <span class="t-table-val">fedor.goossens@outlook.com</span>');
+            printBlank();
+            print('  <span class="t-muted">Bekijk mijn volledige CV: </span><span class="t-link" onclick="navigateTo(\'cv.html\')">cv.html</span>');
+            printBlank();
+            break;
+
+        case 'projects':
+            printBlank();
+            print('<span class="t-white t-bold">Projecten:</span>');
+            printBlank();
+            print('  <span class="t-red">▸</span> <span class="t-white">Portfolio Website</span>     <span class="t-muted">— deze interactieve terminal-portfolio (HTML/CSS/JS)</span>');
+            print('  <span class="t-red">▸</span> <span class="t-white">MDT Deployment</span>       <span class="t-muted">— Windows automatisch uitrollen via Microsoft Deployment Toolkit</span>');
+            print('  <span class="t-red">▸</span> <span class="t-white">VLAN Segmentatie</span>     <span class="t-muted">— netwerksegmentatie met UniFi &amp; WatchGuard bij B1TS</span>');
+            print('  <span class="t-red">▸</span> <span class="t-white">Linux Server Setup</span>   <span class="t-muted">— Ubuntu Server configuratie &amp; Podman containers</span>');
+            printBlank();
+            print('  <span class="t-muted">Meer details: </span><span class="t-link" onclick="navigateTo(\'opdrachten.html\')">opdrachten</span>');
+            printBlank();
+            break;
+
+        case 'education':
+            printBlank();
+            print('<span class="t-white t-bold">Opleiding:</span>');
+            printBlank();
+            print('  <span class="t-table-key">Diploma</span>       <span class="t-table-val">Graduaat Systeem- en Netwerkbeheer</span>');
+            print('  <span class="t-table-key">School</span>        <span class="t-table-val">PXL / Graduaatsopleiding</span>');
+            print('  <span class="t-table-key">Land</span>          <span class="t-table-val">België</span>');
+            print('  <span class="t-table-key">Focus</span>         <span class="t-table-val">Netwerken, Servers, Linux, Cloud, Automatisatie</span>');
+            print('  <span class="t-table-key">Werkplekleren</span> <span class="t-table-val">stage bij B1TS (WPL1 – WPL4)</span>');
+            printBlank();
+            break;
+
+        case 'languages':
+            printBlank();
+            print('<span class="t-white t-bold">Talen:</span>');
+            printBlank();
+            print('  <span class="t-green">████████████████████</span>  <span class="t-white">Nederlands</span>   <span class="t-muted">Moedertaal</span>');
+            print('  <span class="t-green">████████████████</span><span class="t-muted">████</span>  <span class="t-white">Engels</span>       <span class="t-muted">Gevorderd</span>');
+            print('  <span class="t-green">████████</span><span class="t-muted">████████████</span>  <span class="t-white">Frans</span>        <span class="t-muted">Basiskennis</span>');
+            printBlank();
+            break;
+
+        case 'history':
+            printBlank();
+            if (history.length === 0) {
+                print('  <span class="t-muted">Nog geen commando\'s ingevoerd.</span>');
+            } else {
+                history.slice().reverse().forEach((cmd, i) => {
+                    print(`  <span class="t-muted">${String(i + 1).padStart(3, ' ')}</span>  <span class="t-white">${escHtml(cmd)}</span>`);
+                });
+            }
+            printBlank();
+            break;
+
+        case 'sudo':
+            if (args.join(' ').toLowerCase() === 'hire me') {
+                printBlank();
+                print('  <span class="t-green">✔ sudo: authenticatie geslaagd</span>');
+                print('  <span class="t-green">✔ Verzoek verwerkt: hire Fedor Goossens</span>');
+                printBlank();
+                print('  <span class="t-white">Uitstekende keuze! 🎉</span>');
+                print('  <span class="t-muted">Stuur mij een bericht via </span><span class="t-link" onclick="navigateTo(\'contact.html\')">contact</span>');
+                printBlank();
+            } else if (args[0] === 'rm' || (args[0] === '-rf' && args[1] === '/')) {
+                print('  <span class="t-red">rm: het verwijderen van \'/\' is niet toegestaan</span>');
+                print('  <span class="t-muted">Gelukkig maar. Dit portfolio is te mooi om te deleten.</span>');
+            } else {
+                print(`  <span class="t-yellow">sudo: ${escHtml(args.join(' ')|| 'commando')}: permission denied</span>`);
+                print('  <span class="t-muted">Tip: probeer \'sudo hire me\'</span>');
+            }
+            break;
+
+        case 'cat':
+            if (args[0] === '/etc/fedor') {
+                printBlank();
+                print('  <span class="t-muted"># /etc/fedor – systeemconfiguratie</span>');
+                printBlank();
+                print('  <span class="t-cyan">NAME</span>=<span class="t-green">"Fedor Goossens"</span>');
+                print('  <span class="t-cyan">ROLE</span>=<span class="t-green">"IT Student / Junior Sysadmin"</span>');
+                print('  <span class="t-cyan">STAGE</span>=<span class="t-green">"B1TS"</span>');
+                print('  <span class="t-cyan">COFFEE_DEPENDENCY</span>=<span class="t-green">"HIGH"</span>');
+                print('  <span class="t-cyan">BUG_TOLERANCE</span>=<span class="t-green">"LOW"</span>');
+                print('  <span class="t-cyan">LEARNS_FAST</span>=<span class="t-green">"true"</span>');
+                print('  <span class="t-cyan">AVAILABLE_FOR_HIRE</span>=<span class="t-green">"true"</span>');
+                printBlank();
+            } else if (args[0]) {
+                print(`  <span class="t-yellow">cat: ${escHtml(args[0])}: Bestand niet gevonden</span>`);
+                print('  <span class="t-muted">Tip: probeer \'cat /etc/fedor\'</span>');
+            } else {
+                print('  <span class="t-yellow">Gebruik: cat &lt;bestand&gt;</span>');
+            }
+            break;
+
+        case 'rm':
+            if (args.includes('-rf') && (args.includes('/') || args.includes('--no-preserve-root'))) {
+                print('  <span class="t-red">rm: het verwijderen van \'/\' is geblokkeerd</span>');
+                print('  <span class="t-red">error: portfolio te kostbaar om te verwijderen 💀</span>');
+                print('  <span class="t-muted">nice try.</span>');
+            } else {
+                print(`  <span class="t-yellow">rm: ontbrekende operand — gebruik -rf / voor... nee, doe dat niet.</span>`);
+            }
+            break;
+
+        case 'git':
+            if (args[0] === 'log') {
+                printBlank();
+                print('  <span class="t-yellow">commit a3f7d2c</span> <span class="t-muted">(HEAD → main)</span>');
+                print('  <span class="t-muted">Date: Nu</span>');
+                print('  <span class="t-white">  WPL4 gestart – graduaatsproef in uitvoering</span>');
+                printBlank();
+                print('  <span class="t-yellow">commit 9c1e84b</span>');
+                print('  <span class="t-muted">Date: 2025</span>');
+                print('  <span class="t-white">  Stage WPL3 voltooid bij B1TS – VLAN &amp; MDT opgezet</span>');
+                printBlank();
+                print('  <span class="t-yellow">commit 4d2a61f</span>');
+                print('  <span class="t-muted">Date: 2024</span>');
+                print('  <span class="t-white">  Gestart met opleiding Systeem- en Netwerkbeheer</span>');
+                printBlank();
+                print('  <span class="t-yellow">commit 0000001</span>');
+                print('  <span class="t-muted">Date: 2002</span>');
+                print('  <span class="t-white">  Initial commit: Fedor.exe geïnitialiseerd 🚀</span>');
+                printBlank();
+            } else if (args[0] === 'status') {
+                printBlank();
+                print('  On branch <span class="t-green">main</span>');
+                print('  Your branch is up to date with \'origin/main\'');
+                printBlank();
+                print('  <span class="t-green">nothing to commit, working tree clean</span>');
+                printBlank();
+            } else {
+                print(`  <span class="t-yellow">git: '${escHtml(args[0] || '')}' is geen git commando. Probeer 'git log' of 'git status'</span>`);
+            }
             break;
 
         // Navigatie shortcuts
